@@ -6,7 +6,7 @@
 
 **PDF Summarizer** is a web application designed to extract text from PDF files and generate concise, high-quality summaries using the **BART model** (`facebook/bart-large-cnn`) enhanced with a custom **Pointer-Generator Network (PGN)**. Built with **Flask** and **SQLite**, it includes features like user authentication, file upload, and a personalized summary history. The project is deployed on an **Azure Virtual Machine** for scalable and reliable access.
 
-> 🎓 Developed as a final-year engineering project by:
+🎓 Developed as a final-year engineering project by:
 1. **Vedant Kokane**  
 2. **Ajit Abhyankar**  
 3. **Aniket Rajesh**  
