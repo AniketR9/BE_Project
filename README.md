@@ -7,10 +7,10 @@
 **PDF Summarizer** is a web application designed to extract text from PDF files and generate concise, high-quality summaries using the **BART model** (`facebook/bart-large-cnn`) enhanced with a custom **Pointer-Generator Network (PGN)**. Built with **Flask** and **SQLite**, it includes features like user authentication, file upload, and a personalized summary history. The project is deployed on an **Azure Virtual Machine** for scalable and reliable access.
 
 > 🎓 Developed as a final-year engineering project by:
-> - **Vedant Kokane**
-> - **Ajit Abhyankar**
-> - **Aniket Rajesh**
-> - **Vivek Gotecha**
+1. **Vedant Kokane**  
+2. **Ajit Abhyankar**  
+3. **Aniket Rajesh**  
+4. **Vivek Gotecha**
 
 ---
 
@@ -94,18 +94,5 @@ Special thanks to the amazing open-source tools and platforms that made this pro
 - [spaCy NLP](https://spacy.io/)
 - [Flask Web Framework](https://flask.palletsprojects.com/)
 - [Microsoft Azure](https://azure.microsoft.com/)
-
----
-
-## 👨‍💻 Project Team
-
-Developed with dedication by:
-
-| Name              | Role                         |
-|-------------------|------------------------------|
-| Vedant Kokane     | ML Integration, Backend Dev  |
-| Ajit Abhyankar    | Authentication, Hosting      |
-| Aniket Rajesh     | Frontend & UI Logic          |
-| Vivek Gotecha     | NLP Preprocessing, DB Design |
 
 ---
