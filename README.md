@@ -3,47 +3,56 @@
 ---
 
 ## 🌟 Project Overview
-PDF Summarizer is a web application that extracts text from PDF files and generates concise, high-quality summaries using the **BART model** (facebook/bart-large-cnn) enhanced with a custom **Pointer-Generator Network (PGN)**. Built with **Flask** and **SQLite**, it offers user authentication, file upload, and summary history features. The project is deployed on an **Azure Virtual Machine** for reliable access.
 
-This project was crafted as a final-year project by:
+**PDF Summarizer** is a web application designed to extract text from PDF files and generate concise, high-quality summaries using the **BART model** (`facebook/bart-large-cnn`) enhanced with a custom **Pointer-Generator Network (PGN)**. Built with **Flask** and **SQLite**, it includes features like user authentication, file upload, and a personalized summary history. The project is deployed on an **Azure Virtual Machine** for scalable and reliable access.
 
-1. **Vedant Kokane**  
-2. **Ajit Abhyankar**  
-3. **Aniket Rajesh**  
-4. **Vivek Gotecha**
+> 🎓 Developed as a final-year engineering project by:
+> - **Vedant Kokane**
+> - **Ajit Abhyankar**
+> - **Aniket Rajesh**
+> - **Vivek Gotecha**
 
 ---
 
-## ✨ Features
-- 📑 **PDF Text Extraction**: Extracts text from PDFs using spaCy with a custom `spaCyLayout` module.  
-- ✍️ **Advanced Summarization**: Combines BART with a Pointer-Generator Network for precise, context-aware summaries.  
-- 🔒 **User Authentication**: Secure login/register system with bcrypt password hashing.  
-- 💾 **Database Storage**: Stores summaries and user data in SQLite with unique slugs for filenames.  
-- ⬆️ **File Upload**: Supports PDF uploads (up to 16MB) with asynchronous processing.  
-- 📜 **History Tracking**: Displays a history of summarized PDFs for each user.  
-- ☁️ **Azure VM Deployment**: Hosted on an Azure Virtual Machine for scalability and accessibility.
+## ✨ Key Features
+
+- 📑 **PDF Text Extraction**: Utilizes `spaCy` with a custom `spaCyLayout` module to extract structured text from PDFs.
+- 🧠 **Advanced Summarization**: Combines BART with a custom PGN to produce accurate, context-aware summaries.
+- 🔐 **User Authentication**: Secure login and registration with password hashing using `bcrypt`.
+- 💾 **Database Integration**: Stores user data and summaries using `SQLite`, with unique slugs for efficient retrieval.
+- ⬆️ **File Upload**: Accepts PDF files up to 16MB with background processing for smooth UX.
+- 🕓 **History Tracking**: Lets users view and revisit their previously summarized files.
+- ☁️ **Cloud Deployment**: Hosted on an Azure Virtual Machine for global access and uptime.
 
 ---
 
 ## 🛠️ Tech Stack
-- **Backend**: Flask (Python)  
-- **Machine Learning**: PyTorch, Transformers (BART), spaCy  
-- **Database**: SQLite  
-- **Frontend**: HTML, CSS, JavaScript (Flask templates)  
-- **Authentication**: bcrypt  
-- **Deployment**: Azure Virtual Machine  
-- **Other Libraries**: werkzeug, python-dotenv, requests
+
+| Layer            | Tools & Libraries                          |
+|------------------|--------------------------------------------|
+| **Backend**       | Flask (Python)                             |
+| **ML Models**     | HuggingFace Transformers (BART), PyTorch, PGN |
+| **NLP**           | spaCy + spaCyLayout                        |
+| **Database**      | SQLite                                     |
+| **Authentication**| bcrypt                                     |
+| **Frontend**      | HTML, CSS, JavaScript (Flask templates)    |
+| **Deployment**    | Azure Virtual Machine                      |
+| **Other Tools**   | `werkzeug`, `python-dotenv`, `requests`    |
 
 ---
 
-## 🚀 Usage
-1. **Register/Login**: Create an account or log in to access the summarizer.  
-2. **Upload PDF**: Upload a PDF file with a title on the homepage.  
-3. **View Summary**: Summaries are generated in the background and stored in the database.  
-4. **Check History**: View all your summarized PDFs in the History section.  
-5. **Logout**: End your session securely.
+## 🚀 How to Use
+
+1. 🔐 **Register/Login**: Create an account to start using the app.
+2. 📤 **Upload PDF**: Provide a title and upload your PDF document.
+3. 🧠 **Get Summary**: The summarization process runs in the background.
+4. 📜 **View History**: Access previously generated summaries in the "History" tab.
+5. 🔓 **Logout**: End your session securely at any time.
 
 ---
+
+## 📁 Project Structure
+
 
 ## 📂 Project Structure
 ```
@@ -58,35 +67,45 @@ pdf-summarizer/
 
 ---
 
-## 🔍 Notes
-- **File Size Limit**: Supports PDFs up to 16MB.  
-- **Asynchronous Processing**: Summarization runs in the background for a smooth user experience.  
-- **Security**: Passwords are hashed with bcrypt, and filenames are sanitized for safety.  
-- **Azure Hosting**: Deployed on an Azure VM for reliable access.
+## 🔐 Notes & Best Practices
+
+- 📄 **Max File Size**: PDF uploads are capped at 16MB.
+- ⚙️ **Asynchronous Tasks**: Summarization is performed in a background thread for responsiveness.
+- 🛡️ **Security First**: Passwords are hashed, and uploaded filenames are sanitized to prevent security issues.
+- 🌐 **Azure Hosting**: Application is deployed on a reliable Azure VM.
 
 ---
 
-## 🌱 Future Improvements
-- Support for additional file formats (e.g., DOCX, TXT).  
-- Enhanced text preprocessing for better summarization.  
-- Modern frontend with React or similar frameworks.  
-- API endpoints for programmatic access.
+## 🌱 Future Enhancements
+
+- ✅ Support for additional formats: DOCX, TXT, Markdown
+- ✅ Pre-summarization cleanup for noisy PDFs
+- ✅ REST API for external integration
+- ✅ Improved frontend using React, Vue, or Next.js
+- ✅ Switch to PostgreSQL for production-grade storage
 
 ---
 
 ## 🙌 Acknowledgments
-- **Transformers**: For the BART model.  
-- **spaCy**: For robust PDF text extraction.  
-- **Flask**: For a lightweight web framework.  
-- **Azure**: For seamless cloud hosting.
+
+Special thanks to the amazing open-source tools and platforms that made this project possible:
+
+- [HuggingFace Transformers](https://huggingface.co/transformers/)
+- [spaCy NLP](https://spacy.io/)
+- [Flask Web Framework](https://flask.palletsprojects.com/)
+- [Microsoft Azure](https://azure.microsoft.com/)
 
 ---
 
-## 👥 Team
-Developed with passion by:  
-- **Vedant Kokane**  
-- **Ajit Abhyankar**  
-- **Aniket Rajesh**  
-- **Vivek Gotecha**
+## 👨‍💻 Project Team
+
+Developed with dedication by:
+
+| Name              | Role                         |
+|-------------------|------------------------------|
+| Vedant Kokane     | ML Integration, Backend Dev  |
+| Ajit Abhyankar    | Authentication, Hosting      |
+| Aniket Rajesh     | Frontend & UI Logic          |
+| Vivek Gotecha     | NLP Preprocessing, DB Design |
 
 ---
