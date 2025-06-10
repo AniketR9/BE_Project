@@ -1,0 +1,9 @@
+Flask
+torch
+transformers
+spacy
+bcrypt
+python-dotenv
+requests
+werkzeug
+spacy-layout

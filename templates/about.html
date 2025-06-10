@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About | PDF Summary Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <h1>Summary Generator</h1>
+        <div class="nav-links">
+            <a href="/home">Home</a>
+            <a href="/about">About</a>
+            <a href="history">History</a>
+            <a href="/logout">logOut</a>
+        </div>
+    </div>
+    <div class="container">
+        <h2>About This Project</h2>
+        <p>
+            In today's rapidly growing digital age, researchers are overwhelmed with an immense volume of scholarly articles and scientific publications. Manually going through each research paper to extract key insights is time-consuming and inefficient. To address this challenge, our project introduces an intelligent and automated Research Paper Text Summarization Tool that leverages natural language processing (NLP) and deep learning to generate concise summaries of academic PDFs.
+        </p>
+        <p>
+            This tool is designed to help students, scholars, and professionals quickly understand the core content of research papers without reading the entire document. It significantly reduces the time required for literature reviews and improves knowledge discovery in research domains.
+        </p>
+        <p>
+            This approach helps maintain the factual integrity of the summaries, making them reliable for academic and professional use. We use spaCy LayoutParser to efficiently extract and structure content from complex PDF layouts including multi-column formats, equations, and figures.
+            The application is built with a lightweight and user-friendly interface using Flask for the backend and HTML/CSS/JavaScript for the frontend. Users can upload research papers in PDF format, which are processed in the background.
+            Summaries are stored in an SQLite database, enabling easy retrieval using the paper’s title.
+        </p>
+
+        <p>
+            In summary, this project bridges the gap between information overload and research efficiency by offering a practical, AI-driven solution to academic summarization. It empowers users to focus on analysis and innovation rather than spending excessive time on reading, making it a valuable tool for academic researchers, students, and knowledge workers across disciplines.
+        </p>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="back-button-container">
+        <a href="/home" class="button-link">← Back to Home</a>
+      </div>
+    
+</body>
+</html>

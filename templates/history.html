@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>History</title>
+  <link rel="stylesheet" href="/static/history.css" />
+</head>
+<body>
+  <div class="navbar">
+        <h1>Summary Generator</h1>
+        <div class="nav-links">
+            <a href="/home">Home</a>
+            <a href="/about">About</a>
+            <a href="history">History</a>
+            <a href="/logout">logOut</a>
+        </div>
+    </div>
+  <div style="margin-top: 5rem;">
+    <h2>Your Summary History</h2>
+    {% if history %}
+      {% for title, summary, created_at in history %}
+        <div class="history-entry">
+          <div class="entry-title">{{ title }}</div>
+          <div class="entry-date">Generated on {{ created_at }}</div>
+          <div class="entry-summary">{{ summary }}</div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>You haven't summarized any papers yet.</p>
+    {% endif %}
+  </div>
+
+  <br>
+  <br>
+
+  <div class="back-button-container">
+    <a href="/home" class="button-link">← Back to Home</a>
+  </div>
+</body>
+</html>

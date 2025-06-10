@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Summary Generator</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <h1>Summary Generator</h1>
+        <div class="nav-links">
+            <a href="/home">Home</a>
+            <a href="/about">About</a>
+            <a href="history">History</a>
+            <a href="/logout">logOut</a>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Upload a PDF to Generate Summary</h2>
+
+        <input type="text" id="fileName" placeholder="Enter a title of a paper">
+        <button onclick="checkDatabase()">Check Database</button>
+
+        <br>
+
+        <div id="uploadSection" class="hidden">
+            <input type="text" id="fileName1" placeholder="Enter a title of a paper">
+            <input type="file" id="pdfFile" accept="application/pdf">
+            <button onclick="uploadPDF()">Upload</button>
+        </div>
+
+
+        <div id="loadingUpload" class="hidden">
+            <div class="spinner"></div>
+            <p>Processing your PDF... please wait</p>
+        </div>
+        
+
+        <!-- Summary Box -->
+        <div id="summaryBox" class="hidden">
+            <h3>Generated Summary</h3>
+            <p id="summary"></p>
+            <!-- <button onclick="clearSummary()">Clear</button> -->
+        </div>
+    </div>
+
+    <script>
+        
+        function checkDatabase() {
+            // let fileName = document.getElementById("fileName").value;
+            // if (!fileName) {
+            //     alert("Please enter a file name!");
+            //     return;
+            // }
+            // alert("File not found. Please upload a new file.");
+            // document.getElementById("uploadSection").classList.remove("hidden");
+
+            // updated code :- 
+            let fileInput = document.getElementById("fileName").value;
+    if (!fileInput) {
+        alert("Please enter a file Name !");
+        return;
+    }
+    
+    let fileName = fileInput;
+    
+    fetch("/check_file", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fileName: fileName })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.summary) {
+            document.getElementById("summary").innerText = data.summary;
+            document.getElementById("summaryBox").classList.remove("hidden");
+        } else {
+            alert("File not found. Please upload a new file.");
+            document.getElementById("uploadSection").classList.remove("hidden");
+        }
+    })
+    .catch(error => console.error("Error:", error));
+        }
+
+        async function uploadPDF() {
+    let fileInput = document.getElementById("pdfFile");
+    let file = fileInput.files[0];
+
+    let name=document.getElementById("fileName1").value;
+
+    if (!file) {
+        alert("Please select a file!");
+        return;
+    }
+
+    if(!name){
+        alert("please enter a title!");
+        return;
+    }
+
+    let formData = new FormData();
+    formData.append("file", file);
+    formData.append("name",name);
+
+    // Show spinner
+    document.getElementById("loadingUpload").classList.remove("hidden");
+
+    try {
+        const response = await fetch("/upload", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.title) {
+            throw new Error("Upload failed.");
+        }
+
+        const slug = data.title;
+
+        // 🔁 Poll until summary is ready
+        const pollInterval = 3000; // 3 seconds
+        const maxAttempts = 60;    // 3 min
+        let attempts = 0;
+
+        const pollForSummary = async () => {
+            const res = await fetch("/check_file", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ fileName: slug })
+            });
+            const result = await res.json();
+
+            if (result.summary) {
+                document.getElementById("loadingUpload").classList.add("hidden");
+                document.getElementById("summary").textContent = result.summary;
+                document.getElementById("summaryBox").classList.remove("hidden");
+            } else if (attempts < maxAttempts) {
+                attempts++;
+                setTimeout(pollForSummary, pollInterval);
+            } else {
+                throw new Error("Processing timeout. Try again later.");
+            }
+        };
+
+        pollForSummary();
+
+    } catch (error) {
+        console.error("Error:", error);
+        document.getElementById("loadingUpload").classList.add("hidden");
+        alert("An error occurred while processing your request.");
+    }
+}
+
+
+
+
+
+        // function clearSummary() {
+        //     document.getElementById("summary").innerText = "";
+        //     document.getElementById("summaryBox").classList.add("hidden");
+        //     document.getElementById("fileName").value = "";
+        //     document.getElementById("uploadSection").classList.add("hidden");
+        // }
+    </script>
+</body>
+</html>
